@@ -1,0 +1,32 @@
+﻿@model DepartmentViewModel
+<div class="modal fade" id="addBackdrop" data-backdrop="static" tabindex="1" role="dialog" aria-labelledby="addBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBackdropLabel">New department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("AddDepartment", "SysAdmin", FormMethod.Post))
+            {
+                <div class="modal-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.DepartmentName, new { @class = "col-form-label" })
+                        @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+                    </div>
+
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add new department</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

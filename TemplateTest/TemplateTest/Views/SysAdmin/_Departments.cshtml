@@ -1,0 +1,67 @@
+﻿@model Tuple<List<DataAccessLibrary.Models.Department>, List<DataAccessLibrary.Models.Users>>
+@*@using TemplateTest.Models*@
+
+
+
+@{
+    ViewData["Title"] = "Departments";
+    //Dictionary<int, string> usernames = (Dictionary<int, string>)ViewData["boss"];
+
+    }
+
+    <!-- List all departments. -->
+    <table class="table table-striped table-responsive-md btn-table " id="depatmentsTable">
+        <thead>
+            <tr class="font-weight-bolder text-dark">
+                <th>
+                    @Html.DisplayName("Department name")
+                </th>
+                <th>
+                    @Html.DisplayName("Department Supervisor")
+                </th>
+                <th>
+                    @Html.DisplayName("Options")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item1)
+            {
+
+                <tr>
+
+                  
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.DepName)
+                    </td>
+                    <td>
+                        @if (!(item.SupervisorNavigation == null))
+                        {
+                            @Html.DisplayFor(modelItem => item.SupervisorNavigation.Lastname)
+                        }
+                        else
+                        {
+                           @Html.DisplayName("Not set");
+                        }
+
+                    </td>
+                   
+
+                    <td>
+
+
+                       <!-- Edit department button. -->
+
+                        <button id="editOpenModal" class="btn btn-secondary rounded-pill" type="button" data-toggle="modal" data-target="#editBackdrop" data-id="@item.DepId" data-depname="@item.DepName" data-super="@item.Supervisor" >Edit</button> |
+
+                        <!-- Delete department button. -->
+                        <button id="deleteOpenModal" class="btn btn-danger rounded-pill" type="button" data-toggle="modal" data-target="#deleteBackdrop" data-id="@item.DepId" data-value="@item.DepName">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @await Html.PartialAsync("_DeleteDepartments")
+
+    @await Html.PartialAsync("_EditDepartments")

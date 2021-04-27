@@ -1,0 +1,57 @@
+﻿@model DocumentsPageViewModel
+
+
+<br />
+<div class="row">
+    <table class="table table-hover">
+        <thead class="bg-primary text-light">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayName("Document Name")
+                </th>
+                <th scope="col">
+                    @Html.DisplayName("Document End-Date")
+                </th>
+                <th scope="col">
+                    @Html.DisplayName("Document Status")
+                </th>
+                <th>@Html.DisplayName("Options")</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Documents)
+            {
+                <tr>
+                    <td>@Html.ActionLink(System.IO.Path.GetFileName(item.DocumentPath), "GetDocument", "User", new { filePath = item.DocumentPath }, null)</td>
+                    <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+
+                
+                    <td>
+                        <button id="sendbutton" class="btn btn-primary btn-sm rounded mr-3" type="button" data-toggle="modal" data-target="#SignersModal" onclick="setDocumentId(@item.DocId)" >Send</button>
+                        <button id="deleteOpenModal3" class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#deleteBackdrop3" data-id="@item.DocId" data-value="@System.IO.Path.GetFileName(item.DocumentPath)">Delete</button>
+                    </td>
+
+                </tr>
+
+               
+            }
+
+
+        </tbody>
+    </table>
+</div>
+<br />
+<br />
+<br />
+
+
+@await Html.PartialAsync("_DeleteDocument")
+@await Html.PartialAsync("_SignersModal")
+@await Html.PartialAsync("_UploadModal", new DocumentViewModel())
+<div class="showtasks" style="display:none">
+    @await Html.PartialAsync("_Tasks", Model.DocumentsToSign)
+</div>

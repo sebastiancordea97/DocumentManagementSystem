@@ -1,0 +1,91 @@
+﻿@model Tuple<List<DataAccessLibrary.Models.Department>, List<DataAccessLibrary.Models.Users>>
+
+
+<!-- List all users. -->
+<table class="table table-striped table-responsive-md btn-table ">
+    <thead>
+        <tr class="font-weight-bolder text-dark" text-dark>
+            <th>
+                @Html.DisplayName("UserId")
+            </th>
+            <th>
+                @Html.DisplayName("Username")
+            </th> 
+            <th>
+                @Html.DisplayName("UserRank")
+            </th> 
+
+            <th>
+                @Html.DisplayName("UserFunction")
+            </th>
+
+            <th>
+                @Html.DisplayName("Email")
+            </th>
+
+            <th>
+                @Html.DisplayName("Department")
+            </th>
+            <th>
+                @Html.DisplayName("Role")
+            </th>
+            <th>
+                @Html.DisplayName("Supervisor")
+            </th>
+            <th>
+                @Html.DisplayName("Options:")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                   @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>  
+                <td>
+                    @Html.DisplayFor(modelItem => item.Userrank)
+                </td> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFunction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentNavigation.DepName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.Role)
+                </td>
+                <td>
+
+                    @if (!(item.DepartmentNavigation.SupervisorNavigation == null))
+                    {
+                        @Html.DisplayFor(modelItem => item.DepartmentNavigation.SupervisorNavigation.Lastname)
+                    }
+                    else
+                    {
+                        @Html.DisplayName("Not set");
+                    }
+                </td>
+                <td>
+                    <!-- Edit department button. -->
+                    <button id="editOpenModal2" class="btn btn-secondary rounded-pill" type="button" data-toggle="modal" data-target="#editBackdrop2" data-id="@item.UserId" data-username="@item.Lastname" data-firstname="@item.Firstname" 
+                             data-rank="@item.Userrank" data-function="@item.UserFunction" @*data-supervisor="@item.Supervisor.Lastname"*@ data-email="@item.Email" data-depid="@item.DepartmentId" data-usertypeid="@item.RoleId">Edit</button> |
+
+                    <!-- Delete department button. -->
+                    <button id="deleteOpenModal2" class="btn btn-danger rounded-pill" type="button" data-toggle="modal" data-target="#deleteBackdrop2" data-id="@item.UserId" data-username="@item.Lastname" data-email="@item.Email">Delete</button> 
+
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

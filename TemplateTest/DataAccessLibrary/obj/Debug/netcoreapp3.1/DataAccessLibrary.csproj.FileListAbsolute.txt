@@ -1,0 +1,10 @@
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\bin\Debug\netcoreapp3.1\DataAccessLibrary.deps.json
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\bin\Debug\netcoreapp3.1\DataAccessLibrary.dll
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\bin\Debug\netcoreapp3.1\DataAccessLibrary.pdb
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\obj\Debug\netcoreapp3.1\DataAccessLibrary.AssemblyInfoInputs.cache
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\obj\Debug\netcoreapp3.1\DataAccessLibrary.AssemblyInfo.cs
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\obj\Debug\netcoreapp3.1\DataAccessLibrary.dll
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\obj\Debug\netcoreapp3.1\DataAccessLibrary.pdb
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\bin\Debug\netcoreapp3.1\DataAccessLibrary.runtimeconfig.json
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\bin\Debug\netcoreapp3.1\DataAccessLibrary.runtimeconfig.dev.json
+D:\Licenta lucru\TemplateTest\DataAccessLibrary\obj\Debug\netcoreapp3.1\DataAccessLibrary.csprojAssemblyReference.cache

@@ -1,0 +1,43 @@
+﻿ @model DocumentViewModel 
+  <div class="modal fade" id="uploadModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >File Upload Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-lg">
+                    @using (Html.BeginForm("UploadDocument", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                       
+                    <div class="form-group row">
+
+
+                        <div class="md-form">
+                            @Html.LabelFor(m => m.EndDate)
+                            <!--The date represented by 'TodoStartDate' is read from the model and is of type 'DateTime'-->
+                            <input placeholder="Selected date" type="date" name="EndDate" class="form-control datepicker">
+                        </div>
+
+                        
+                        <div class="md-form">
+                            
+                            <label class="col-form-label pb-0">Document</label>
+                           
+                            <input type='file' name='file' id='file' accept=".pdf" class='form-control-plaintext'><br>
+                        </div>
+
+                    </div> 
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" id="btn_upload">Upload</button>
+                            </div>
+                            }
+                        </div>
+            </div>
+        </div>
+     </div>
+    

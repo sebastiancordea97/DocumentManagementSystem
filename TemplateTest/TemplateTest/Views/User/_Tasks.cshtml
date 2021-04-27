@@ -1,0 +1,50 @@
+﻿
+@using DataAccessLibrary.Models
+@model List<Documents>
+    <div class="row">
+        <table class="table table-hover">
+            <thead class="bg-primary text-light">
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayName("Document Name")
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayName("End-Date")
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayName("Issuer")
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayName("Response")
+                    </th>
+
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model as List<Documents>)
+                {
+                    <tr>
+
+                        <td>@Html.ActionLink(System.IO.Path.GetFileName(item.DocumentPath), "GetDocument", "User", new { filePath = item.DocumentPath }, null)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+
+
+                        <td>
+                            @Html.ActionLink("Sign", "SignDocument", "User", new { documentId = item.DocId }, new { @class = "btn  btn-primary btn-sm rounded mr-3" })
+                            @Html.ActionLink("Approve", "ApproveDocument", "User", new { id = item.DocId }, new { @class = "btn btn-success btn-sm rounded mr-3 text-light" })
+                            @Html.ActionLink("Revoke", "RevokeDocument", "User", new { id = item.DocId }, new { @class = "btn btn-danger btn-sm rounded mr-3 text-light" })
+
+                        </td>
+
+                    </tr>
+
+
+                }
+
+
+            </tbody>
+        </table>
+    </div>
